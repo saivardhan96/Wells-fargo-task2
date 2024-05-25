@@ -10,9 +10,8 @@ public class Client {
     @GeneratedValue
     private long clientId;
 
-    @OneToMany
-    @Column(nullable = false)
-    private long advisorId;
+    @ManyToOne
+    private Advisor advisor;
 
     @Column(nullable = false)
     private String firstName;
@@ -29,9 +28,9 @@ public class Client {
     @Column(nullable = false)
     private String email;
 
-    public Client(long clientId, long advisorId, String firstName, String lastName, String address, String phone, String email) {
+    public Client(long clientId, Advisor advisor, String firstName, String lastName, String address, String phone, String email) {
         this.clientId = clientId;
-        this.advisorId = advisorId;
+        this.advisor = advisor;
         this.firstName = firstName;
         this.lastName = lastName;
         this.address = address;
@@ -47,12 +46,12 @@ public class Client {
         this.clientId = clientId;
     }
 
-    public long getAdvisorId() {
-        return advisorId;
+    public Advisor getAdvisor() {
+        return advisor;
     }
 
-    public void setAdvisorId(long advisorId) {
-        this.advisorId = advisorId;
+    public void setAdvisor(Advisor advisor) {
+        this.advisor = advisor;
     }
 
     public String getFirstName() {
